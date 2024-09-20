@@ -20,12 +20,22 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <form class="m-t" role="form" action="index.html">
+            <form class="m-t" role="form" action="{{ route('auth.login') }}" method="POST">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input type="email" class="form-control" placeholder="email" name="name" required="">
+                    <div class="text-danger">
+                        @error('name')
+                            {{ $message }}
+                        @enderror
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" placeholder="Password" name="password" required="">
+                    <div class="text-danger">
+                        @error('password')
+                            {{ $message }}
+                        @enderror
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 

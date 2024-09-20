@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterAccountRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -19,5 +20,8 @@ class AuthController extends Controller
             'email',
             'password',
         ));
+
+        return Redirect::back()
+            ->with('success', 'Successfulyl created new account');
     }
 }

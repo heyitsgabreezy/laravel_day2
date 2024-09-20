@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoviesController;
@@ -7,11 +8,16 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+
+Route::prefix('/auth')->name('auth.')->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+});
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
