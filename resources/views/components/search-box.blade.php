@@ -1,0 +1,1 @@
+<input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
